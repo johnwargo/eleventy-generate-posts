@@ -20,29 +20,53 @@ This adds a `11ty-gp` command to the system.
 
 ## Usage
 
-
-
+Execute the command using the following command-line options:
 
 ```shell
-┌─────────────────────────┐
-│                         │
-│   11ty Generate Posts   │
-│                         │
-└─────────────────────────┘
-by John M. Wargo (https://johnwargo.com)
-Usage: eleventy-generate-posts [options] <numPosts> <targetFolder> <tag> [startYear]
-
-Arguments:
-  numPosts      Number of posts to generate
-  targetFolder  Target folder for generated posts files
-  tag           Tag to apply to all generated posts
-  startYear     Start year for generated posts
-
-Options:
-  -d, --debug   Debug mode
-  -h, --help    display help for command
+11ty-gp [options] <numPosts> <targetFolder> <tag> [startYear]
 ```
 
+Supported command-line options are:
+
+* (required) `numPosts`: An integer value representing the number of posts generated.
+* (required) `targetFolder`: Relative path pointing to the Eleventy project's posts folder. use `.` for the current folder.
+* (required) `tag`: The post tag applied to the generated posts
+* (optional) `startYear`: The starting year used for post date in the generated posts. The command uses the current date or the current date with the specified year (when provided) to for the post date for the first generated post. For subsequent post dates, the command randomly decrements the day.
+
+As an example, to generate 10 posts in the projects `posts` folder using a `tags` value of post, use:
+
+```shell
+11ty-gp 10 posts post
+```
+
+The command will set the post date for the current post to the current date, then work backwards (randomly) for each subsequent generated post.
+
+To generate 20 posts in 2021, use the following:
+
+```shell
+11ty-gp 20 posts post 2021
+```
+
+The command will set the post date for the current post to the current month/day plus the provided year, then work backwards (randomly) for each subsequent generated post. So, if you execute the command on May 10, 2023, the command will set the post date for the first post to May 10, 2021 and work (randomly) backwards from there.
+
+Supported command-line options (flags) are:
+
+* `-d` or `--debug`: Enables debug mode which generates additional content to the terminal during execution
+* `h` or `--help`: Displays usage information in the terminal
+
+A sample generated post looks like the following:
+
+```markdown
+---
+title: Boaster Halogen Jokingly Evident Decode Steadfast
+date: 2023-03-19
+tags: post
+---
+
+Bacon ipsum dolor amet brisket picanha swine beef ribs pork.  Pig short ribs andouille ham ribeye hamburger tail rump turducken kevin alcatra bacon beef meatloaf.  Bresaola pancetta pig, cupim frankfurter brisket pork belly turkey.  Pork belly frankfurter cupim, salami picanha short ribs beef ribs chuck fatback pastrami doner chicken ham.  Tail fatback landjaeger chicken jowl, pancetta bresaola picanha.  Pork belly ball tip picanha bresaola capicola prosciutto drumstick swine flank cupim corned beef.
+
+Sausage frankfurter ground round tail, tri-tip burgdoggen flank pork loin.  Bresaola landjaeger shoulder pastrami burgdoggen meatball.  Frankfurter kevin pig, hamburger andouille tail meatloaf cupim meatball beef ribs prosciutto.  Meatloaf chislic flank tri-tip swine filet mignon brisket sirloin turkey porchetta.
+```
 
 ### Getting Help Or Making Changes
 
