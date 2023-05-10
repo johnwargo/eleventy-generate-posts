@@ -6,7 +6,6 @@
  * Created May 9, 2023
  */
 
-
 // node modules
 import fs from 'fs-extra';
 import path from 'path';
@@ -19,7 +18,6 @@ import YAML from 'yaml'
 //@ts-ignore
 import logger from 'cli-logger';
 var log = logger();
-
 
 enum HighlightType {
   Red, Yellow, Green
