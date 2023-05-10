@@ -1,0 +1,9 @@
+# folders
+.vscode/
+node_modules/
+src/
+
+# files
+eleventy.config.js
+package-lock.json
+tsconfig.json
