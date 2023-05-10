@@ -1,6 +1,7 @@
 # folders
-.vscode/
+.github/
 node_modules/
+posts/
 src/
 
 # files
