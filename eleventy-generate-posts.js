@@ -57,22 +57,22 @@ function checkEleventyProject() {
     });
     return result;
 }
-console.log(boxen(APP_NAME, { padding: 1 }));
-console.log(APP_AUTHOR);
-log.level(log.INFO);
 if (!checkEleventyProject()) {
     log.error('Current folder is not an Eleventy project folder.');
     process.exit(1);
 }
-log.info('Project is an Eleventy project folder');
 const program = new Command();
 program
+    .name('11ty-gp')
+    .description('Generate a set of posts for an Eleventy project')
     .argument('<numPosts>', 'Number of posts to generate')
     .argument('<targetFolder>', 'Target folder for generated posts files')
     .argument('<tag>', 'Tag to apply to all generated posts')
     .argument('[startYear]', 'Start year for generated posts')
     .option('-d, --debug', 'Debug mode')
     .action(async (numPosts, targetFolder, tag, startYear) => {
+    console.log(boxen(APP_NAME, { padding: 1 }));
+    console.log(APP_AUTHOR);
     const options = program.opts();
     const debugMode = options.debug;
     if (debugMode) {
@@ -131,4 +131,5 @@ program
         fs.writeFileSync(outputFilePath, thePost, 'utf8');
     }
 });
+console.log();
 program.parse();
