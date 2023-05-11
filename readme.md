@@ -27,10 +27,10 @@ Execute the command using the following command-line parameters:
 
 Supported command-line options are:
 
-* `numPosts`: (required) An integer value representing the number of posts generated.
-* `targetFolder`: (required) Relative path pointing to the Eleventy project's posts folder; use `.` for the current folder.
-* `tag`: (required) The post tag applied to the generated posts
-* `startYear`: (optional) The starting year used for post date in the generated posts. The command uses the current date or the current date with the specified year (when provided) to for the post date for the first generated post. For subsequent post dates, the command randomly decrements the day.
+* `numPosts` (required) An integer value representing the number of posts generated.
+* `targetFolder` (required) Relative path pointing to the Eleventy project's posts folder; use `.` for the current folder.
+* `tag` (required) The post tag applied to the generated posts
+* `startYear` (optional) The starting year used for post date in the generated posts. The command uses the current date or the current date with the specified year (when provided) to for the post date for the first generated post. For subsequent post dates, the command randomly decrements the day.
 
 As an example, to generate 10 posts in the project's `posts` folder using a `tags` value of `post`, use:
 
