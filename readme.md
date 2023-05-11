@@ -4,7 +4,7 @@ A simple command-line utility that creates a batch of new posts for an [Eleventy
 
 When you're testing out some aspect of an Eleventy site or doing a demo, you often need to populate the site with a set of posts to flesh out the site. Copying a single post or set of posts repeatedly into the site works, but an automated solution is better. This is that solution.
 
-The utility generates batches of Eleventy site posts, populating the post title with a random quantity of random words and populating the post body with a random number of paragraphs of [Bacon Ipsum](https://baconipsum.com/) text.
+The utility generates batches of Eleventy site posts, populating the post title with a random quantity of random words using the [Rando Free Random Word Generator API](https://random-word-api.vercel.app/) and populating the post body with a random number of paragraphs of [Bacon Ipsum](https://baconipsum.com/) text.
 
 ## Installation
 
