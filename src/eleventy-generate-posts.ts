@@ -103,6 +103,7 @@ program
   .argument('<tag>', 'Tag to apply to all generated posts')
   .argument('[startYear]', 'Start year for generated posts')
   .option('-d, --debug', 'Debug mode')
+  .option('-y, --year', 'Save to Year folder')
   .action(async (numPosts, targetFolder, tag, startYear) => {
 
     console.log(boxen(APP_NAME, { padding: 1 }));
@@ -119,6 +120,9 @@ program
     writeConsole(yellow, 'Target Folder', targetFolder);
     if (startYear) writeConsole(yellow, 'Start Year', startYear);
     writeConsole(yellow, 'Tag', tag);
+
+    const yearMode = options.year;
+    writeConsole(yellow, 'Year mode', yearMode ? 'enabled' : 'disabled');
 
     if (!Number.isInteger(parseInt(numPosts))) {
       writeConsole(red, 'Error', 'Number of posts must be an integer');
@@ -178,7 +182,12 @@ program
       thePost += postContent.join('\n\n');
 
       // write the post to the target folder
-      var outputFilePath = path.join(targetFolder, postTitle.toLowerCase().replaceAll(' ', '-') + '.md');
+      var outputFilePath = path.join(process.cwd(), targetFolder);
+      if (yearMode) {
+        outputFilePath = path.join(outputFilePath, currentDate.getFullYear().toString());
+        if (!fs.existsSync(outputFilePath)) fs.mkdirSync(outputFilePath, { recursive: true });
+      }
+      var outputFilePath = path.join(outputFilePath, postTitle.toLowerCase().replaceAll(' ', '-') + '.md');
       writeConsole(green, 'Writing', outputFilePath);
       fs.writeFileSync(outputFilePath, thePost, 'utf8');
     }
