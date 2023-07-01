@@ -37,6 +37,7 @@ The module will prompt you for all the required options:
 │                         │
 └─────────────────────────┘
 by John M. Wargo (https://johnwargo.com)
+
 √ Target folder for generated posts? ... posts
 √ Number of posts to generate? ... 10
 √ Post tag? ... post
