@@ -6,6 +6,8 @@ When you're testing out some aspect of an Eleventy site or doing a demo, you oft
 
 The utility generates batches of Eleventy site posts, populating the post title with a random quantity of random words using the [Rando Free Random Word Generator API](https://random-word-api.vercel.app/) and populating the post body with a random number of paragraphs of [Bacon Ipsum](https://baconipsum.com/) text.
 
+The original version of this utility used command-line arguments, but this version replaces them with prompts.
+
 ## Installation
 
 To install the command globally on the system, open a terminal window or command prompt, then execute the following command:
@@ -20,48 +22,61 @@ You don't have to install the package to use it; simply open a terminal window o
 
 ## Usage
 
-Execute the command using the following command-line parameters:
+Execute the command using the following command:
 
 ```shell
-11ty-gp [options] <numPosts> <targetFolder> <tag> [startYear]
+11ty-gp
 ```
 
-Supported command-line parameters are:
+The module will prompt you for all the required options:
 
-* `numPosts` (required) An integer value representing the number of posts generated.
-* `targetFolder` (required) Relative path pointing to the Eleventy project's posts folder; use `.` for the current folder.
-* `tag` (required) The post tag applied to the generated posts
-* `startYear` (optional) The starting year used for post date in the generated posts. The command uses the current date or the current date with the specified year (when provided) to for the post date for the first generated post. For subsequent post dates, the command randomly decrements the day.
+```text
+┌─────────────────────────┐
+│                         │
+│   11ty Generate Posts   │
+│                         │
+└─────────────────────────┘
+by John M. Wargo (https://johnwargo.com)
+√ Target folder for generated posts? ... posts
+√ Number of posts to generate? ... 10
+√ Post tag? ... post
+√ Start year for generated posts? ... 2023
+√ Use year folder for posts? ... yes
 
-Supported command-line options (flags) are:
+Settings Summary:
+----------------------------------------
+Number of posts: 10
+Target Folder: posts
+Start Year: 2023
+Tag: post
+Year mode: enabled
+Output folder: D:\dev\node\11ty-generate-posts\posts
 
-* `-d` or `--debug`: Enables debug mode which generates additional content to the terminal during execution
-* `-h` or `--help`: Displays usage information in the terminal
-* `-y` or `--year`: instructs the command to store posts to a subfolder for the post date year.
-
-As an example, to generate 10 posts in the project's `posts` folder using a `tags` value of `post`, use:
-
-```shell
-11ty-gp 10 posts post
+Generating posts...
+----------------------------------------
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\navigator-washbasin-dramatize-landside-sensation.md
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\amusing-peculiar-surgical-borough-impotency-surround-tubular.md
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\maturely-convene-squishier-verify.md
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\matchless-overlaid-expend-oxidation-tribesman.md
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\basis-brunt-swaddling-ladylike-support-epidemic-graded.md
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\certify-unsheathe-undress-obstacle-tweak-tray-ridden.md
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\matching-enjoying-contact-atlas.md
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\android-gecko-penalize-possum.md
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\contempt-acquire-filtrate-defense-ergonomic-acts.md
+Writing: D:\dev\node\11ty-generate-posts\posts\2023\splinter-ecology-computer-nearby-shorts-feminize.md
 ```
 
-This command sets the post date for the current post to the current date, then works backwards (random days) for each subsequent generated post.
+Configuration options are:
 
-To generate 20 posts starting in 2021, use the following:
-
-```shell
-11ty-gp 20 posts post 2021
-```
-
-This command sets the post date for the current post to the current month/day plus the provided year, then works backwards (random days) for each subsequent generated post. So, if you execute the command on May 10, 2023, the command sets the post date for the first post to May 10, 2021 and works (randomly) backwards from there.
-
-To generate 20 posts starting in 2021 and store them in a folder for the current year (`posts/2021` in this example), use the `-y` or `--year` flag on the command line:
-
-```shell
-11ty-gp 20 posts post 2021 -y
-```
+* Posts Folder: Relative path pointing to the Eleventy project's posts folder; use `.` for the current folder.
+* Number of Posts: An integer value between 1 and 100 representing the number of posts generated.
+* Post Tag: The front matter `tag` property applied to the generated posts
+* Start Year: The starting year used for post date in the generated posts. The command uses the current date or the current date with the specified year (when provided) to for the post date for the first generated post. For subsequent post dates, the command randomly decrements the day.
+* Use Year Folder: specifies whether the module writes generated posts to the Posts folder (`N`) or into a separate folder for each year (`Y`).
 
 Obviously if you generate enough posts to push into the previous year, the posts will save into a folder for the previous year. 
+
+To enable debug mode, pass a `-d` flag on the command-line; in this mode, the module writes additional information to the console as it executes.
 
 ## Example Post
 

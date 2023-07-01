@@ -34,7 +34,7 @@ type Frontmatter = {
 // ====================================
 
 const APP_NAME = '11ty Generate Posts';
-const APP_AUTHOR = 'by John M. Wargo (https://johnwargo.com)';
+const APP_AUTHOR = 'by John M. Wargo (https://johnwargo.com)\n';
 const ELEVENTY_FILES = ['.eleventy.js', 'eleventy.config.js'];
 const NEW_LINE = "\n";
 const spaces40 = '-'.repeat(40);
@@ -52,13 +52,6 @@ var yearMode: boolean;
 // ====================================
 // Functions
 // ====================================
-
-// https://www.30secondsofcode.org/js/s/process-arguments-have-flags/
-const hasFlags = (...flags: any): boolean =>
-  //@ts-ignore
-  flags.every(flag =>
-    process.argv.includes(/^-{1,2}/.test(flag) ? flag : '--' + flag)
-  );
 
 function zeroPad(tmpVal: number, numChars: number = 2): string {
   return tmpVal.toString().padStart(numChars, '0');
@@ -111,9 +104,10 @@ if (!checkEleventyProject()) {
 console.log(boxen(APP_NAME, { padding: 1 }));
 console.log(APP_AUTHOR);
 
-const debugMode = hasFlags('d');
+const debugMode = process.argv.includes('-d');
 if (debugMode) {
-  console.log('Debug mode enabled.');
+  // console.log('Debug mode enabled\n');
+  writeConsole(green, 'Debug mode', 'enabled\n');
 }
 log.level(debugMode ? log.DEBUG : log.INFO);
 
