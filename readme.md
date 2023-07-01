@@ -18,7 +18,7 @@ npm install -g eleventy-generate-posts
 
 This adds a `11ty-gp` command to the system.
 
-You don't have to install the package to use it; simply open a terminal window or command prompt to your Eleventy project folder and execute the command using `npx eleventy-generate-posts` and the command-line options described in the following section.
+You don't have to install the package to use it; simply open a terminal window or command prompt to your Eleventy project folder and execute the command using `npx eleventy-generate-posts` and it will execute without being installed.
 
 ## Usage
 
