@@ -37,6 +37,7 @@ const APP_NAME = '11ty Generate Posts';
 const APP_AUTHOR = 'by John M. Wargo (https://johnwargo.com)';
 const ELEVENTY_FILES = ['.eleventy.js', 'eleventy.config.js'];
 const NEW_LINE = "\n";
+const spaces40 = '-'.repeat(40);
 
 const red = HighlightType.Red;
 const yellow = HighlightType.Yellow;
@@ -126,7 +127,7 @@ const questions: any[] = [
   {
     type: 'number',
     name: 'numPosts',
-    initial: 100,
+    initial: 10,
     message: 'Number of posts to generate?'
   },
   {
@@ -157,7 +158,7 @@ tag = response.tag;
 yearMode = response.yearMode;
 
 console.log('\nSettings Summary:' );
-console.log('-'.repeat(40));
+console.log(spaces40);
 writeConsole(yellow, 'Number of posts', numPosts.toString());
 writeConsole(yellow, 'Target Folder', targetFolder);
 writeConsole(yellow, 'Start Year', startYear.toString());
@@ -177,7 +178,7 @@ if (!directoryExists(outputFilePath)) {
 }
 
 console.log('\nGenerating posts...');
-console.log('-'.repeat(40));
+console.log(spaces40);
 
 // Pick a start date for the posts
 var currentDate = new Date();
