@@ -1,6 +1,10 @@
 # Changelog
 
-## 20230701
+## 20230709 - version 0.0.4
+
+Made number of posts the first prompt, it seemed better this way.
+
+## 20230701 - version 0.0.3
 
 Replaced command line options with interactive prompts
 

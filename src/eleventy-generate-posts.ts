@@ -113,30 +113,26 @@ log.level(debugMode ? log.DEBUG : log.INFO);
 
 const questions: any[] = [
   {
-    type: 'text',
-    name: 'targetFolder',
-    initial: 'src/posts',
-    message: 'Target folder for generated posts?'
-  },
-  {
     type: 'number',
     name: 'numPosts',
     initial: 10,
     message: 'Number of posts to generate?'
-  },
-  {
+  }, {
+    type: 'text',
+    name: 'targetFolder',
+    initial: 'src/posts',
+    message: 'Target folder for generated posts?'
+  }, {
     type: 'text',
     name: 'tag',
     message: 'Post tag?',
     initial: 'post'
-  },
-  {
+  }, {
     type: 'number',
     name: 'startYear',
     initial: new Date().getFullYear(),
     message: 'Start year for generated posts?'
-  },
-  {
+  }, {
     type: 'confirm',
     name: 'yearMode',
     initial: true,
@@ -151,7 +147,7 @@ startYear = response.startYear;
 tag = response.tag;
 yearMode = response.yearMode;
 
-console.log('\nSettings Summary:' );
+console.log('\nSettings Summary:');
 console.log(spaces40);
 writeConsole(yellow, 'Number of posts', numPosts.toString());
 writeConsole(yellow, 'Target Folder', targetFolder);

@@ -38,8 +38,8 @@ The module will prompt you for all the required options:
 └─────────────────────────┘
 by John M. Wargo (https://johnwargo.com)
 
-√ Target folder for generated posts? ... posts
 √ Number of posts to generate? ... 10
+√ Target folder for generated posts? ... posts
 √ Post tag? ... post
 √ Start year for generated posts? ... 2023
 √ Use year folder for posts? ... yes
@@ -69,8 +69,8 @@ Writing: D:\dev\node\11ty-generate-posts\posts\2023\splinter-ecology-computer-ne
 
 Configuration options are:
 
-* **Posts Folder:** Relative path pointing to the Eleventy project's posts folder; use `.` for the current folder.
 * **Number of Posts:** An integer value between 1 and 100 representing the number of posts generated.
+* **Posts Folder:** Relative path pointing to the Eleventy project's posts folder; use `.` for the current folder.
 * **Post Tag:** The front matter `tag` property applied to the generated posts
 * **Start Year:** The starting year used for post date in the generated posts. The command uses the current date or the current date with the specified year (when provided) to for the post date for the first generated post. For subsequent post dates, the command randomly decrements the day.
 * **Use Year Folder:** specifies whether the module writes generated posts to the Posts folder (`N`) or into a separate folder for each year (`Y`).
