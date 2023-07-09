@@ -1,6 +1,6 @@
 {
   "name": "eleventy-generate-posts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Generates batches of Eleventy posts",
   "author": "John M. Wargo",
   "license": "MIT",
