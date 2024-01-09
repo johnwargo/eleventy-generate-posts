@@ -19,7 +19,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node eleventy-generate-posts.js"
+    "start": "tsc && node eleventy-generate-posts.js",
+    "startg": "tsc && node eleventy-generate-posts.js -g"
   },
   "dependencies": {
     "boxen": "^7.0.2",
