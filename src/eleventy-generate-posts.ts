@@ -188,7 +188,9 @@ for (let i = 1; i < numPosts; i++) {
   // generate the post title
   log.debug('\nGetting random words (this may take a few seconds)');
   let wordCount = getRandomInt(4) + 3;
-  let letTitleRes: Response = await fetch(`https://random-word-api.vercel.app/api?words=${wordCount}`);
+  // invalid API, no longer available
+  // let letTitleRes: Response = await fetch(`https://random-word-api.vercel.app/api?words=${wordCount}`);
+  let letTitleRes: Response = await fetch(`https://random-word-api.herokuapp.com/word?number=${wordCount}`);
   let titleWords = await letTitleRes.json();
   titleWords = titleWords.map((a: any) => a.charAt(0).toUpperCase() + a.substr(1));
   let postTitle = titleWords.join(' ');

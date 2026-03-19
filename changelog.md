@@ -1,5 +1,9 @@
 # Changelog
 
+## 20260318 (v0.0.6)
+
+Replaced the word generator API with a different one (https://random-word-api.herokuapp.com/home) since the original was no longer available.
+
 ## 20240109 (v0.0.5)
 
 Added `-g` parameter used to append generator content to the end of generated posts:

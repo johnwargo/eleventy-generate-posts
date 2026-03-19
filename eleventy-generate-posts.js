@@ -78,14 +78,14 @@ if (debugMode) {
 log.level(debugMode ? log.DEBUG : log.INFO);
 const generatorInfo = process.argv.includes('-g');
 if (generatorInfo) {
-    writeConsole(green, 'Generator info', 'will be added to post files\n');
+    writeConsole(green, 'Append generator info', 'enabled\n');
 }
 const questions = [
     {
         type: 'number',
         name: 'numPosts',
         initial: 10,
-        message: 'Number of posts to generate?'
+        message: 'Number of posts to generate (1-100)?'
     }, {
         type: 'text',
         name: 'targetFolder',
@@ -140,7 +140,7 @@ numPosts++;
 for (let i = 1; i < numPosts; i++) {
     log.debug('\nGetting random words (this may take a few seconds)');
     let wordCount = getRandomInt(4) + 3;
-    let letTitleRes = await fetch(`https://random-word-api.vercel.app/api?words=${wordCount}`);
+    let letTitleRes = await fetch(`https://random-word-api.herokuapp.com/word?number=${wordCount}`);
     let titleWords = await letTitleRes.json();
     titleWords = titleWords.map((a) => a.charAt(0).toUpperCase() + a.substr(1));
     let postTitle = titleWords.join(' ');
