@@ -1,5 +1,10 @@
 # Changelog
 
+## 20260320 (v0.0.7)
+
+* Added support for timestamps (something I use in my sites instead of a simple article date)
+* Show post count in output
+
 ## 20260318 (v0.0.6)
 
 Replaced the word generator API with a different one (https://random-word-api.herokuapp.com/home) since the original was no longer available.
