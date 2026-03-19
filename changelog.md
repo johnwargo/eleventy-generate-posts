@@ -18,7 +18,7 @@ Added `-g` parameter used to append generator content to the end of generated po
 
 ## 20230709 - version 0.0.4
 
-Made number of posts the first prompt, it seemed better this way.
+Made number of posts the first prompt, it seems better this way.
 
 ## 20230701 - version 0.0.3
 
