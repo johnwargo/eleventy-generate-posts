@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johnwargo/eleventy-generate-posts"
+    "url": "git+https://github.com/johnwargo/eleventy-generate-posts.git"
   },
   "type": "module",
   "main": "eleventy-generate-posts.js",
