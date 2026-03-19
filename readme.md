@@ -75,7 +75,7 @@ Configuration options are:
 * **Post Tag:** The front matter `tag` property applied to the generated posts
 * **Start Year:** The starting year used for post date in the generated posts. The command uses the current date or the current date with the specified year (when provided) to for the post date for the first generated post. For subsequent post dates, the command randomly decrements the day.
 * **Use Year Folder:** specifies whether the module writes generated posts to the Posts folder (`N`) or into a separate folder for each year (`Y`).
-* **Timestamp**
+* **Timestamp** Adds a `timestamp` property (`timestamp: 2026-01-13T12:13:16.979Z`) to generated post frontmatter. On many of my sites, I display the `timestamp` for posts instead of the `date` property; this allows me to sort posts by creation time as well as date.
 
 Obviously if you generate enough posts to push into the previous year, the posts will save into a folder for the previous year. 
 
@@ -93,8 +93,9 @@ A sample generated post looks like the following:
 ```markdown
 ---
 title: Boaster Halogen Jokingly Evident Decode Steadfast
-date: 2023-03-19
+date: 2026-01-13
 tags: post
+timestamp: 2026-01-13T12:13:16.979Z
 ---
 
 Bacon ipsum dolor amet brisket picanha swine beef ribs pork.  Pig short ribs andouille ham ribeye hamburger

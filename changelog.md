@@ -2,8 +2,9 @@
 
 ## 20260320 (v0.0.7)
 
-* Added support for timestamps (something I use in my sites instead of a simple article date)
-* Show post count in output
+* Added support for timestamps (something I use in my sites instead of a simple article date).
+* Pressing escape or ctrl-C during prompting now fails gracefully.
+* Show post count in output.
 
 ## 20260318 (v0.0.6)
 

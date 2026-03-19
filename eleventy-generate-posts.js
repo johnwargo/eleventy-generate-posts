@@ -22,6 +22,8 @@ const spaces40 = '-'.repeat(40);
 const red = HighlightType.Red;
 const yellow = HighlightType.Yellow;
 const green = HighlightType.Green;
+var counterLen;
+var counterStr;
 var numPosts;
 var startYear;
 var tag;
@@ -121,6 +123,7 @@ const questions = [
 const response = await prompts(questions, { onCancel: onCancelPrompt });
 targetFolder = response.targetFolder;
 numPosts = response.numPosts;
+counterLen = numPosts.toString().length;
 startYear = response.startYear;
 tag = response.tag;
 yearMode = response.yearMode;
@@ -185,6 +188,7 @@ for (let i = 1; i < numPosts; i++) {
             fs.mkdirSync(outputFilePath, { recursive: true });
     }
     var outputFilePath = path.join(outputFilePath, postTitle.toLowerCase().replaceAll(' ', '-') + '.md');
-    writeConsole(green, `[${i}] Writing`, outputFilePath);
+    counterStr = i.toString().padStart(counterLen);
+    writeConsole(green, `[${counterStr}] Writing`, outputFilePath);
     fs.writeFileSync(outputFilePath, thePost, 'utf8');
 }
