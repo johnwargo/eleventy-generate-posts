@@ -24,6 +24,7 @@ enum HighlightType {
 }
 
 type Frontmatter = {
+  timestamp?: string;
   title: string;
   date: string;
   tags: string;
@@ -48,7 +49,13 @@ var numPosts: number;
 var startYear: number;
 var tag: string;
 var targetFolder: string;
+var timestampMode: boolean;
 var yearMode: boolean;
+
+const onCancelPrompt = () => {
+  log.info('\nOperation cancelled by user!');
+  process.exit(0);
+};
 
 // ====================================
 // Functions
@@ -143,18 +150,21 @@ const questions: any[] = [
     name: 'yearMode',
     initial: true,
     message: 'Use year folder for posts?'
-  },
+  }, {
+    type: 'confirm',
+    name: 'timestampMode',
+    initial: true,
+    message: 'Include timestamp in post metadata?'
+  }
 ];
 
-// TODO: Exit gracefully if the user cancels the prompts
-
-const response = await prompts(questions);
+const response = await prompts(questions, { onCancel: onCancelPrompt });
 targetFolder = response.targetFolder;
 numPosts = response.numPosts;
 startYear = response.startYear;
 tag = response.tag;
 yearMode = response.yearMode;
-
+timestampMode = response.timestampMode;
 console.log('\nSettings Summary:');
 console.log(spaces40);
 writeConsole(yellow, 'Number of posts', numPosts.toString());
@@ -162,6 +172,7 @@ writeConsole(yellow, 'Target Folder', targetFolder);
 writeConsole(yellow, 'Start Year', startYear.toString());
 writeConsole(yellow, 'Tag', tag);
 writeConsole(yellow, 'Year mode', yearMode ? 'enabled' : 'disabled');
+writeConsole(yellow, 'Timestamp mode', timestampMode ? 'enabled' : 'disabled');
 
 if (!(numPosts > 0 && numPosts < 101)) {
   writeConsole(red, 'Error', 'Number of posts must be between 1 and 100');
@@ -208,6 +219,10 @@ for (let i = 1; i < numPosts; i++) {
     tags: tag
   };
 
+  if (timestampMode) {
+    postFm.timestamp = currentDate.toISOString();
+  }
+
   // get the post content
   log.debug('Getting bacon ipsum text (this may take a few seconds)...');
   let response: Response = await fetch(`https://baconipsum.com/api/?type=all-meat&paras=${getRandomInt(10)}&start-with-lorem=1`);
@@ -230,6 +245,6 @@ for (let i = 1; i < numPosts; i++) {
     if (!fs.existsSync(outputFilePath)) fs.mkdirSync(outputFilePath, { recursive: true });
   }
   var outputFilePath = path.join(outputFilePath, postTitle.toLowerCase().replaceAll(' ', '-') + '.md');
-  writeConsole(green, 'Writing', outputFilePath);
+  writeConsole(green, `[${i}] Writing`, outputFilePath);
   fs.writeFileSync(outputFilePath, thePost, 'utf8');
 }

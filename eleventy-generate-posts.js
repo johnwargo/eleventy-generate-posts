@@ -26,7 +26,12 @@ var numPosts;
 var startYear;
 var tag;
 var targetFolder;
+var timestampMode;
 var yearMode;
+const onCancelPrompt = () => {
+    log.info('\nOperation cancelled by user!');
+    process.exit(0);
+};
 function zeroPad(tmpVal, numChars = 2) {
     return tmpVal.toString().padStart(numChars, '0');
 }
@@ -106,14 +111,20 @@ const questions = [
         name: 'yearMode',
         initial: true,
         message: 'Use year folder for posts?'
-    },
+    }, {
+        type: 'confirm',
+        name: 'timestampMode',
+        initial: true,
+        message: 'Include timestamp in post metadata?'
+    }
 ];
-const response = await prompts(questions);
+const response = await prompts(questions, { onCancel: onCancelPrompt });
 targetFolder = response.targetFolder;
 numPosts = response.numPosts;
 startYear = response.startYear;
 tag = response.tag;
 yearMode = response.yearMode;
+timestampMode = response.timestampMode;
 console.log('\nSettings Summary:');
 console.log(spaces40);
 writeConsole(yellow, 'Number of posts', numPosts.toString());
@@ -121,6 +132,7 @@ writeConsole(yellow, 'Target Folder', targetFolder);
 writeConsole(yellow, 'Start Year', startYear.toString());
 writeConsole(yellow, 'Tag', tag);
 writeConsole(yellow, 'Year mode', yearMode ? 'enabled' : 'disabled');
+writeConsole(yellow, 'Timestamp mode', timestampMode ? 'enabled' : 'disabled');
 if (!(numPosts > 0 && numPosts < 101)) {
     writeConsole(red, 'Error', 'Number of posts must be between 1 and 100');
     process.exit(1);
@@ -153,6 +165,9 @@ for (let i = 1; i < numPosts; i++) {
         date: postDate,
         tags: tag
     };
+    if (timestampMode) {
+        postFm.timestamp = currentDate.toISOString();
+    }
     log.debug('Getting bacon ipsum text (this may take a few seconds)...');
     let response = await fetch(`https://baconipsum.com/api/?type=all-meat&paras=${getRandomInt(10)}&start-with-lorem=1`);
     let postContent = await response.json();
@@ -170,6 +185,6 @@ for (let i = 1; i < numPosts; i++) {
             fs.mkdirSync(outputFilePath, { recursive: true });
     }
     var outputFilePath = path.join(outputFilePath, postTitle.toLowerCase().replaceAll(' ', '-') + '.md');
-    writeConsole(green, 'Writing', outputFilePath);
+    writeConsole(green, `[${i}] Writing`, outputFilePath);
     fs.writeFileSync(outputFilePath, thePost, 'utf8');
 }

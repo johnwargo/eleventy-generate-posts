@@ -43,6 +43,7 @@ by John M. Wargo (https://johnwargo.com)
 √ Post tag? ... post
 √ Start year for generated posts? ... 2023
 √ Use year folder for posts? ... yes
+√ Include timestamp in post metadata? ... yes
 
 Settings Summary:
 ----------------------------------------
@@ -55,16 +56,16 @@ Output folder: D:\dev\node\11ty-generate-posts\posts
 
 Generating posts...
 ----------------------------------------
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\navigator-washbasin-dramatize-landside-sensation.md
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\amusing-peculiar-surgical-borough-impotency-surround-tubular.md
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\maturely-convene-squishier-verify.md
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\matchless-overlaid-expend-oxidation-tribesman.md
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\basis-brunt-swaddling-ladylike-support-epidemic-graded.md
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\certify-unsheathe-undress-obstacle-tweak-tray-ridden.md
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\matching-enjoying-contact-atlas.md
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\android-gecko-penalize-possum.md
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\contempt-acquire-filtrate-defense-ergonomic-acts.md
-Writing: D:\dev\node\11ty-generate-posts\posts\2023\splinter-ecology-computer-nearby-shorts-feminize.md
+[ 1] Writing: D:\dev\node\11ty-generate-posts\posts\2023\navigator-washbasin-dramatize-landside-sensation.md
+[ 2] Writing: D:\dev\node\11ty-generate-posts\posts\2023\amusing-peculiar-surgical-borough-impotency-surround-tubular.md
+[ 3] Writing: D:\dev\node\11ty-generate-posts\posts\2023\maturely-convene-squishier-verify.md
+[ 4] Writing: D:\dev\node\11ty-generate-posts\posts\2023\matchless-overlaid-expend-oxidation-tribesman.md
+[ 5] Writing: D:\dev\node\11ty-generate-posts\posts\2023\basis-brunt-swaddling-ladylike-support-epidemic-graded.md
+[ 6] Writing: D:\dev\node\11ty-generate-posts\posts\2023\certify-unsheathe-undress-obstacle-tweak-tray-ridden.md
+[ 7] Writing: D:\dev\node\11ty-generate-posts\posts\2023\matching-enjoying-contact-atlas.md
+[ 8] Writing: D:\dev\node\11ty-generate-posts\posts\2023\android-gecko-penalize-possum.md
+[ 9] Writing: D:\dev\node\11ty-generate-posts\posts\2023\contempt-acquire-filtrate-defense-ergonomic-acts.md
+[10] Writing: D:\dev\node\11ty-generate-posts\posts\2023\splinter-ecology-computer-nearby-shorts-feminize.md
 ```
 
 Configuration options are:
@@ -74,6 +75,7 @@ Configuration options are:
 * **Post Tag:** The front matter `tag` property applied to the generated posts
 * **Start Year:** The starting year used for post date in the generated posts. The command uses the current date or the current date with the specified year (when provided) to for the post date for the first generated post. For subsequent post dates, the command randomly decrements the day.
 * **Use Year Folder:** specifies whether the module writes generated posts to the Posts folder (`N`) or into a separate folder for each year (`Y`).
+* **Timestamp**
 
 Obviously if you generate enough posts to push into the previous year, the posts will save into a folder for the previous year. 
 
