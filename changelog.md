@@ -1,5 +1,14 @@
 # Changelog
 
+## 20260320 (v0.0.8)
+
+After I replaced the random words API URL in the previous version, I realize that I mistakenly assumed that the connection to remote URLs (the random words API and the bacon ipsum API) would always work. It wont, as the previous version proved. Anyway, that caused me to make this update which:
+
+* Wraps both API calls in a `try/catch` block
+* Checks fetch responses for HTTP OK (200) before continuing
+
+In both cases, when there's a problem with `fetch` completing, the utility displays an error and exits.
+
 ## 20260320 (v0.0.7)
 
 * Added support for timestamps (something I use in my sites instead of a simple article date).
