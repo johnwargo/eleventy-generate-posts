@@ -43,8 +43,6 @@ const randomWordsErrorStr = 'Unable to retrieve random words for title.';
 const NEW_LINE = "\n";
 const spaces40 = '-'.repeat(40);
 
-
-
 const red = HighlightType.Red;
 const yellow = HighlightType.Yellow;
 const green = HighlightType.Green;
